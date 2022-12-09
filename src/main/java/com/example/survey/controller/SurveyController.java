@@ -17,7 +17,8 @@ public class SurveyController {
     @PostMapping("create")
     public ResponseDto<?> createSurvey(@RequestBody @Valid SurveyDto surveyDto) {
         /**
-         *get userId from authenticated user(meaning only logged in user can access this endpoint)
+         *get userId from authenticated user object(meaning only logged in user can access this endpoint)
+         *long userId = IUserDetails.getId(authentication);
          * */
         long userId = 1L;
         return ResponseDto.wrapSuccessResult(surveyService.createSurvey(userId, surveyDto), "request.successful");
@@ -31,7 +32,8 @@ public class SurveyController {
     @GetMapping("get-all-survey")
     public ResponseDto<?> getAllSurvey() {
         /**
-         *get userId from authenticated user(meaning only logged in user can access this endpoint)
+         *get userId from authenticated user object(meaning only logged in user can access this endpoint)
+         * long userId = IUserDetails.getId(authentication);
          * */
         long userId = 1L;
         return ResponseDto.wrapSuccessResult(surveyService.getSurveyByUserId(userId), "request.successful");
